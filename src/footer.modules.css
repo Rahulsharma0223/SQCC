@@ -1,0 +1,116 @@
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+
+.footer-logo img {
+    width: 178px;
+    height: 170px;
+    margin-right: 50px;
+    margin-top: -20px;
+}
+
+.footer-icons{
+    margin-top: auto; 
+    margin-left: 150px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.footer-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.footer-icons a:hover {
+    color: #66fcf1; 
+}
+
+.footer-menu {
+    display: flex;
+}
+
+.footer-menu .explore{
+    margin: 0 70px;
+}
+
+.footer-menu .contact{
+    margin-right: 100px;
+}
+
+.footer-menu .explore h4{
+    margin-left: -20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+
+.footer-menu .contact h4{
+    margin-left: -20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.footer-menu ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: justify;
+}
+
+.footer-menu li {
+    margin: 5px 0;
+}
+
+.footer-menu a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-menu a:hover {
+    color: #66fcf1;
+}
+
+.scroll-to-top {
+    margin-top: 20px;
+}
+
+.scroll-to-top a {
+    color: #fff;
+    font-size: 24px;
+    transition: color 0.3s;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+.scroll-to-top a:hover {
+    color: #66fcf1;
+}
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    margin:0px;
+    padding:0px;
+}
+
