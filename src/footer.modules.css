@@ -1,80 +1,63 @@
+/* Base footer styles */
 .footer {
     background-color: #000;
     color: #fff;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     text-align: center;
-    min-height: 220px;
+    min-height: 230px;  /* Keeps min-height for all devices */
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;   /* Ensuring no overflow */
 }
 
-
+/* Footer content wrapper */
 .footer-content {
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
+    width: 100%;
+    margin: 0px;
+    padding: 0px 50px 0px 0px;
+    box-sizing: border-box;
 }
 
-
+/* Footer logo on the left */
+.footer-logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
 
 .footer-logo img {
     width: 178px;
     height: 170px;
-    margin-right: 50px;
-    margin-top: -20px;
+    margin-top: 25px;
 }
 
-.footer-icons{
-    margin-top: auto; 
-    margin-left: 150px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.footer-icons a {
-    color: #fff;
-    margin: 0 10px;
-    font-size: 24px;
-    transition: color 0.3s;
-}
-
-.footer-icons a:hover {
-    color: #66fcf1; 
-}
-
+/* Footer menu on the right */
 .footer-menu {
     display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    padding: 0px 10px; 
+    margin-top: 10px;
 }
 
-.footer-menu .explore{
-    margin: 0 70px;
+.footer-menu .explore,
+.footer-menu .contact {
+    margin-left: 50px;
+    text-align: justify;
 }
 
-.footer-menu .contact{
-    margin-right: 100px;
-}
-
-.footer-menu .explore h4{
-    margin-left: -20px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-
-}
-
-.footer-menu .contact h4{
-    margin-left: -20px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+.footer-menu h4 {
+    margin-bottom: 5px;
 }
 
 .footer-menu ul {
     list-style-type: none;
     padding: 0;
-    text-align: justify;
 }
 
 .footer-menu li {
@@ -91,26 +74,107 @@
     color: #66fcf1;
 }
 
+/* Footer icons */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+.footer-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.footer-icons a:hover {
+    color: #66fcf1;
+}
+
+/* Scroll to top */
 .scroll-to-top {
-    margin-top: 20px;
+    margin-top:3px;
 }
 
 .scroll-to-top a {
     color: #fff;
     font-size: 24px;
     transition: color 0.3s;
-    padding: 0px;
-    margin-top: 20px;
 }
 
 .scroll-to-top a:hover {
     color: #66fcf1;
 }
 
-.copyright{
+/* Copyright */
+.copyright {
     width: 100%;
     text-align: center;
-    margin:0px;
-    padding:0px;
+    margin-top: 0px;
 }
 
+/* Media Query for Small Devices */
+@media (max-width: 768px) {
+    .footer {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .footer-content {
+        padding: 0px 0px; /* Reduced padding to fit content */
+        width: 100%; /* Ensure it fits the viewport */
+        box-sizing: border-box; /* Include padding and borders in width */
+    }
+
+    .footer-logo {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .footer-menu {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+        margin-left: 0px; /* Adjusted margin to fit content */
+        margin-right: 0px;
+        box-sizing: border-box; /* Ensure margin is included in width */
+    }
+
+    .footer-menu .contact{
+        margin-right: 20px;
+        text-align: justify;
+        margin-left: 20px;
+    }
+
+    .footer-menu .explore{
+        margin-left: -43px;
+    }
+
+    .footer-menu .explore{
+        text-align:justify;
+    }
+
+    .footer-logo img {
+        width: 130px; /* Adjust logo size if necessary */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .footer-menu a {
+        font-size: 14px; /* Adjust font size if necessary */
+    }
+
+    /* Ensure footer icons and other elements fit within the viewport */
+    .footer-icons {
+        margin-top: 15px; /* Adjusted spacing */
+    }
+
+    .scroll-to-top {
+        display: none;
+    }
+
+    .copyright {
+        margin-top: 15px;
+        font-size: 12px; /* Adjusted font size if necessary */
+    }
+}

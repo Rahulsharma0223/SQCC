@@ -13,8 +13,15 @@
 
 
 .event-container {
-    text-align: center;
-    font-family: Arial, sans-serif;
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.event-wrapper {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
 }
 
 
@@ -27,26 +34,27 @@
 }
 
 .event-card {
-    width: 450px;
-    height: 400px; 
-    margin: 0 auto;
-    margin-bottom: 40px;
+    flex: 0 1 400px; 
+    height: 350px;
     background-color: rgba(0, 0, 0, 0.7); 
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px; 
 }
 
 .event-card-image {
     width: 100%;
-    height: 300px; 
-    object-fit: cover; 
+    height: 80%; 
+    object-fit: block;
+    display: inline-block; 
 }
 
 .event-details {
-    padding: 20px;
+    padding: 8px;
     color: #fff;
-}
+    text-align: center;
+    flex-grow: 1; 
 
 .event-name {
     font-size: 1.5em;
@@ -60,7 +68,6 @@
 }
 
 .learn-more-button {
-    margin-top: 10px; 
     width: 400px; 
     height: 40px; 
     padding: 0;
@@ -76,4 +83,69 @@
 .learn-more-button:hover {
     background-color: #02301a;
     color: #0f1c0f;
+}
+
+/* Media query for medium devices (769px to 1200px) */
+@media (max-width: 1200px) and (min-width: 769px) {
+    .event-container {
+        display: flex; 
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: center; 
+        gap: 20px; 
+    }
+
+    .event-wrapper {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%; 
+        max-width: 450px;
+
+    .event-card {
+        width: 100%; 
+        max-width: 450px; 
+        max-height: 300px;
+    }
+
+    .event-details{
+        text-align: center;
+    }
+
+
+    .event-card-image {
+        max-width: 100%; 
+        height: auto; 
+    }
+
+    .learn-more-button {
+        width: 100%; 
+        max-width: 400px; 
+        
+    }
+}
+
+
+
+/* Media query for small devices */
+@media (max-width: 768px) {
+    .event-container {
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    .event-card {
+        width: 100%; 
+        max-height: 380px;
+    }
+
+    .event-card-image {
+        width: 100%;
+        height: 300px; 
+        object-fit: block;
+        display: block;
+    }
+
+    .learn-more-button {
+        display: none; /* Hide the Learn More button */
+    }
 }

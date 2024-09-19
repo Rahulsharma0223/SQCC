@@ -8,14 +8,27 @@ const Event = () => {
         <div className="event-background" style={{ backgroundImage: `url(${bgImage})` }}>
             <h2 className="event-title">EVENTS</h2>
             <div className="event-container">
-                <div className="event-card">
-                    <img src={eventImage} alt="Event" className="event-card-image" />
-                    <div className="event-details">
-                        <h3 className="event-name">Event Name</h3>
-                        <p className="event-date">Oct..... 2024</p>
+                <div className="event-wrapper">
+                    <div className="event-card">
+                        <img src={eventImage} alt="Event" className="event-card-image" />
+                        <div className="event-details">
+                            <h3 className="event-name">Event Name</h3>
+                            <p className="event-date">Oct..... 2024</p>
+                        </div>
                     </div>
+                    <button className="learn-more-button">Learn More</button>
                 </div>
-                <button className="learn-more-button">Learn More</button>
+                <div className="event-wrapper">
+                    <div className="event-card">
+                        <img src={eventImage} alt="Event" className="event-card-image" />
+                        <div className="event-details">
+                            <h3 className="event-name">Event Name</h3>
+                            <p className="event-date">Oct..... 2024</p>
+                        </div>
+                    </div>
+                    <button className="learn-more-button">Learn More</button>
+                </div>
+                
             </div>
         </div>
     );
