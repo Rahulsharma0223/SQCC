@@ -55,7 +55,7 @@
     color: #fff;
     text-align: center;
     flex-grow: 1; 
-
+}
 .event-name {
     font-size: 1.5em;
     margin: 0;
@@ -101,6 +101,7 @@
         align-items: center; 
         width: 100%; 
         max-width: 450px;
+    }
 
     .event-card {
         width: 100%; 
