@@ -3,42 +3,45 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  padding: 20px 10px; 
   box-sizing: border-box;
 }
 
 .gallery-title {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  color: white;
   text-align: center;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 .gallery-row {
-  width: 100%;
-  margin-bottom: 40px;
+  max-width: 1200px; /* Limit the maximum width of the row */
+  margin: 0 auto; /* Center the row with automatic left and right margins */
+  padding: 0 20px; /* Add padding on the left and right sides */
+  width: 100%; /* Ensure the row takes up the full width of its container */
+  position: relative;
 }
+
 
 .title {
   font-size: 1.5rem;
-  margin-bottom: 10px;
+  color: white;
   text-align: left;
   padding-left: 20px;
   width: 100%;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .slider {
   display: flex;
-  align-items: center;
-  justify-content: space-between; /* Ensure the buttons are at the ends */
-  width: 100%;
+  justify-content: center;
+  align-items: center; /* Center the images vertically */
   position: relative;
+  width: 100%;
 }
 
 .prev-button, .next-button {
@@ -51,37 +54,48 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 1; /* Ensure buttons are on top of images */
 }
 
 .prev-button {
-  left: 0; /* Position the previous button to the left edge */
+  left: 0px; /* Keep button inside the viewport */
 }
 
 .next-button {
-  right: 0; /* Position the next button to the right edge */
+  right: 0px; /* Keep button inside the viewport */
 }
 
 .image-container {
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
+  flex-direction: row; /* Change to column for stacking images and dots vertically */
+  align-items: center; /* Center items horizontally */
   overflow: hidden;
-  flex-grow: 1; /* Make the container take up remaining space between buttons */
-  justify-content: space-between; /* Spread the images evenly */
-  padding: 0 40px; /* Add padding to ensure space between the buttons and images */
+  flex-grow: 1;
+  margin: 0px;
+  padding: 0px;
+  height: 200px;
 }
 
 .gallery-item {
-  flex: 1; /* Distribute the width evenly across the images */
-  margin: 0 10px;
+  width: 30%; /* Ensure each image takes 30% of the available space */
+  height: auto;
+  margin: 0 65px; 
+  box-sizing: border-box;
+  padding: 0px;
 }
 
 .gallery-item img {
-  width: 100%;
-  height: auto;
+  width: 200px;
+  height: 180px; /* Fixed height for all images */
   object-fit: cover;
+  margin: 25px;
 }
 
 .pagination {
+  position: relative; /* Positioned relative to the parent .gallery-row */
   margin-top: 10px;
+  text-align: center;
 }
 
 .dot {
