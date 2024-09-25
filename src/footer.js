@@ -1,5 +1,5 @@
 import React from 'react';
-import './footer.modules.css';
+import './footer.css';
 import QuantumLogo from './images/QUANTUMLOGO.png';
 
 const Footer = () => {
