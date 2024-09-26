@@ -1,9 +1,10 @@
+/* Default for large devices */
 .gallery-section {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 20px 10px; 
+  padding: 20px 10px;
   box-sizing: border-box;
 }
 
@@ -11,18 +12,18 @@
   font-size: 2.5rem;
   color: white;
   text-align: center;
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
 .gallery-row {
-  max-width: 1200px; /* Limit the maximum width of the row */
-  margin: 0 auto; /* Center the row with automatic left and right margins */
-  padding: 0 20px; /* Add padding on the left and right sides */
-  width: 100%; /* Ensure the row takes up the full width of its container */
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
   position: relative;
+  overflow: hidden; /* Hide overflowing images */
 }
-
 
 .title {
   font-size: 1.5rem;
@@ -32,14 +33,14 @@
   width: 100%;
   box-sizing: border-box;
   padding-bottom: 5px;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .slider {
   display: flex;
   justify-content: center;
-  align-items: center; /* Center the images vertically */
+  align-items: center;
   position: relative;
   width: 100%;
 }
@@ -54,46 +55,46 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1; /* Ensure buttons are on top of images */
+  z-index: 1;
+  transition: opacity 0.3s ease; /* Smooth fade transition */
 }
 
 .prev-button {
-  left: 0px; /* Keep button inside the viewport */
+  left: 10px; /* Position within the viewport */
 }
 
 .next-button {
-  right: 0px; /* Keep button inside the viewport */
+  right: 10px; /* Position within the viewport */
 }
 
 .image-container {
-  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
-  flex-direction: row; /* Change to column for stacking images and dots vertically */
-  align-items: center; /* Center items horizontally */
-  overflow: hidden;
-  flex-grow: 1;
-  margin: 0px;
-  padding: 0px;
-  height: 200px;
+  transition: transform 0.3s ease-in-out; /* Smooth slide transition */
+  width: 100%; /* Set width to 100% */
+  padding-right: 10px; /* Adjust padding for the last item */
+  padding-left: 80px;
+  justify-content: space-between; /* Spread items evenly */
+  background-color: rgb(1,21,1,0.7);
 }
 
 .gallery-item {
-  width: 30%; /* Ensure each image takes 30% of the available space */
-  height: auto;
-  margin: 0 65px; 
-  box-sizing: border-box;
-  padding: 0px;
+  flex-shrink: 0; /* Prevent shrinking */
+  width: calc(33.33% - 20px); /* 3 items visible on large screens, adjusted for gap */
+  height: 250px; /* Fixed height for all images */
+  margin: 10px; /* Margin to create gap between items */
+  box-sizing: border-box; /* Include padding in width */
+  overflow: hidden; /* Hide overflow for images */
 }
 
 .gallery-item img {
-  width: 200px;
-  height: 180px; /* Fixed height for all images */
-  object-fit: cover;
-  margin: 25px;
+  width: 80%; /* Ensure the image fits its container */
+  height: 100%; /* Set height to 100% of the gallery item */
+  object-fit: cover; /* Cover ensures images fill the area */
 }
 
+/* Pagination styles */
 .pagination {
-  position: relative; /* Positioned relative to the parent .gallery-row */
+  position: relative;
   margin-top: 10px;
   text-align: center;
 }
@@ -109,4 +110,33 @@
 
 .active-dot {
   background-color: grey;
+}
+
+/* Medium devices (768px - 960px) */
+@media screen and (max-width: 960px) and (min-width: 768px) {
+  .gallery-row{
+    max-width: fit-content;
+  }
+  .gallery-item {
+    width: calc(50% - 20px); /* Only 2 items visible at a time */
+  }
+  
+  .prev-button, .next-button {
+    display: none; /* Hide buttons */
+  }
+}
+
+/* Small devices (less than 768px) */
+@media screen and (max-width: 767px) {
+  .gallery-row{
+    max-width: fit-content;
+  }
+
+  .gallery-item {
+    width: calc(100% - 20px); /* Only 1 item visible at a time */
+  }
+  
+  .prev-button, .next-button {
+    display: none; /* Hide buttons */
+  }
 }

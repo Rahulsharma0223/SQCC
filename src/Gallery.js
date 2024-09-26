@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Gallery.css';
 import bgImage from './images/bg.jpg'; // Path to your background image
 import image1 from './images/image1.jpg';
@@ -17,56 +17,69 @@ import image12 from './images/image12.jpg';
 const Gallery = () => {
   const [currentSlide1, setCurrentSlide1] = useState(0);
   const [currentSlide2, setCurrentSlide2] = useState(0);
+  const [visibleImages, setVisibleImages] = useState(3); // Default to 3 images for large screens
 
-  const imagesSet1 = [
-    image1, image2, image3,
-    image4, image5, image6
-  ];
+  const imagesSet1 = [image1, image2, image3, image4, image5, image6];
+  const imagesSet2 = [image7, image8, image9, image10, image11, image12];
 
-  const imagesSet2 = [
-    image7, image8, image9,
-    image10, image11, image12
-  ];
+  // Update the number of visible images based on the screen width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setVisibleImages(1); // Show 1 image on small screens
+      } else if (window.innerWidth < 960) {
+        setVisibleImages(2); // Show 2 images on medium screens
+      } else {
+        setVisibleImages(3); // Show 3 images on large screens
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set the initial number of visible images
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleNext1 = () => {
-    setCurrentSlide1((prev) => (prev + 3) % imagesSet1.length);
+    setCurrentSlide1((prev) => (prev + visibleImages) % imagesSet1.length);
   };
 
   const handlePrev1 = () => {
-    setCurrentSlide1((prev) => (prev - 3 + imagesSet1.length) % imagesSet1.length);
+    setCurrentSlide1((prev) => (prev - visibleImages + imagesSet1.length) % imagesSet1.length);
   };
 
   const handleNext2 = () => {
-    setCurrentSlide2((prev) => (prev + 3) % imagesSet2.length);
+    setCurrentSlide2((prev) => (prev + visibleImages) % imagesSet2.length);
   };
 
   const handlePrev2 = () => {
-    setCurrentSlide2((prev) => (prev - 3 + imagesSet2.length) % imagesSet2.length);
+    setCurrentSlide2((prev) => (prev - visibleImages + imagesSet2.length) % imagesSet2.length);
   };
 
   return (
     <section className="gallery-section" style={{ backgroundImage: `url(${bgImage})` }}>
       <h2 className="gallery-title">GALLERY</h2>
-      
+
       {/* First Title Section */}
       <div className="gallery-row">
         <h3 className="title">Title 1</h3>
         <div className="slider">
           <button className="prev-button" onClick={handlePrev1}>‹</button>
           <div className="image-container">
-            {imagesSet1.slice(currentSlide1, currentSlide1 + 3).map((image, index) => (
-              <div key={index} className="gallery-item">
-                <img src={image} alt={`Slide ${index}`} />
-              </div>
-            ))}
+            {imagesSet1
+              .slice(currentSlide1, currentSlide1 + visibleImages)
+              .map((image, index) => (
+                <div key={index} className="gallery-item">
+                  <img src={image} alt={`Slide ${index}`} />
+                </div>
+              ))}
           </div>
           <button className="next-button" onClick={handleNext1}>›</button>
         </div>
         <div className="pagination">
-          {Array.from({ length: Math.ceil(imagesSet1.length / 3) }, (_, index) => (
+          {Array.from({ length: Math.ceil(imagesSet1.length / visibleImages) }, (_, index) => (
             <span
               key={index}
-              className={`dot ${currentSlide1 / 3 === index ? 'active-dot' : ''}`}
+              className={`dot ${Math.floor(currentSlide1 / visibleImages) === index ? 'active-dot' : ''}`}
             ></span>
           ))}
         </div>
@@ -78,19 +91,21 @@ const Gallery = () => {
         <div className="slider">
           <button className="prev-button" onClick={handlePrev2}>‹</button>
           <div className="image-container">
-            {imagesSet2.slice(currentSlide2, currentSlide2 + 3).map((image, index) => (
-              <div key={index} className="gallery-item">
-                <img src={image} alt={`Slide ${index}`} />
-              </div>
-            ))}
+            {imagesSet2
+              .slice(currentSlide2, currentSlide2 + visibleImages)
+              .map((image, index) => (
+                <div key={index} className="gallery-item">
+                  <img src={image} alt={`Slide ${index}`} />
+                </div>
+              ))}
           </div>
           <button className="next-button" onClick={handleNext2}>›</button>
         </div>
         <div className="pagination">
-          {Array.from({ length: Math.ceil(imagesSet2.length / 3) }, (_, index) => (
+          {Array.from({ length: Math.ceil(imagesSet2.length / visibleImages) }, (_, index) => (
             <span
               key={index}
-              className={`dot ${currentSlide2 / 3 === index ? 'active-dot' : ''}`}
+              className={`dot ${Math.floor(currentSlide2 / visibleImages) === index ? 'active-dot' : ''}`}
             ></span>
           ))}
         </div>
