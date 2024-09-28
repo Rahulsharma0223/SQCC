@@ -13,14 +13,22 @@ import image9 from './images/image9.jpg';
 import image10 from './images/image10.jpg';
 import image11 from './images/image11.jpg';
 import image12 from './images/image12.jpg';
+import image13 from './images/image11.jpg';
+import image14 from './images/image11.jpg';
+import image15 from './images/image11.jpg';
+import image16 from './images/image11.jpg';
+import image17 from './images/image11.jpg';
+import image18 from './images/image11.jpg';
 
 const Gallery = () => {
   const [currentSlide1, setCurrentSlide1] = useState(0);
   const [currentSlide2, setCurrentSlide2] = useState(0);
+  const [currentSlide3, setCurrentSlide3] = useState(0); // New state for the third slider
   const [visibleImages, setVisibleImages] = useState(3); // Default to 3 images for large screens
 
   const imagesSet1 = [image1, image2, image3, image4, image5, image6];
   const imagesSet2 = [image7, image8, image9, image10, image11, image12];
+  const imagesSet3 = [image13, image14, image15, image16, image17, image18]; // Updated image set with 6 images for the third section
 
   // Update the number of visible images based on the screen width
   useEffect(() => {
@@ -55,13 +63,21 @@ const Gallery = () => {
     setCurrentSlide2((prev) => (prev - visibleImages + imagesSet2.length) % imagesSet2.length);
   };
 
+  const handleNext3 = () => {
+    setCurrentSlide3((prev) => (prev + visibleImages) % imagesSet3.length);
+  };
+
+  const handlePrev3 = () => {
+    setCurrentSlide3((prev) => (prev - visibleImages + imagesSet3.length) % imagesSet3.length);
+  };
+
   return (
     <section className="gallery-section" style={{ backgroundImage: `url(${bgImage})` }}>
       <h2 className="gallery-title">GALLERY</h2>
 
       {/* First Title Section */}
       <div className="gallery-row">
-        <h3 className="title">Title 1</h3>
+        <h3 className="title">Quantathon 1.O</h3>
         <div className="slider">
           <button className="prev-button" onClick={handlePrev1}>‹</button>
           <div className="image-container">
@@ -87,7 +103,7 @@ const Gallery = () => {
 
       {/* Second Title Section */}
       <div className="gallery-row">
-        <h3 className="title">Title 2</h3>
+        <h3 className="title">Meets</h3>
         <div className="slider">
           <button className="prev-button" onClick={handlePrev2}>‹</button>
           <div className="image-container">
@@ -106,6 +122,32 @@ const Gallery = () => {
             <span
               key={index}
               className={`dot ${Math.floor(currentSlide2 / visibleImages) === index ? 'active-dot' : ''}`}
+            ></span>
+          ))}
+        </div>
+      </div>
+
+      {/* Third Title Section */}
+      <div className="gallery-row">
+        <h3 className="title">Induction Meets</h3>
+        <div className="slider">
+          <button className="prev-button" onClick={handlePrev3}>‹</button>
+          <div className="image-container">
+            {imagesSet3
+              .slice(currentSlide3, currentSlide3 + visibleImages)
+              .map((image, index) => (
+                <div key={index} className="gallery-item">
+                  <img src={image} alt={`Slide ${index}`} />
+                </div>
+              ))}
+          </div>
+          <button className="next-button" onClick={handleNext3}>›</button>
+        </div>
+        <div className="pagination">
+          {Array.from({ length: Math.ceil(imagesSet3.length / visibleImages) }, (_, index) => (
+            <span
+              key={index}
+              className={`dot ${Math.floor(currentSlide3 / visibleImages) === index ? 'active-dot' : ''}`}
             ></span>
           ))}
         </div>
